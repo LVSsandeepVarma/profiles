@@ -3,6 +3,7 @@ import { Card, Button, Container, Col, Row } from 'react-bootstrap'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form";
+import Spinner from 'react-bootstrap/Spinner';
 
 
 export default function CardComponent() {
@@ -105,7 +106,11 @@ export default function CardComponent() {
                 dataLength={data.length}
                 next={fetchData}
                 hasMore={loadMoreData}
-                loader={<div className="loader" key={0}>Loading ...</div>}
+                loader={
+                    <div style={{height:"98vh",width:"100%",display:"flex",justifyContent:"center",alignItems:"center", overflow:'hidden'}} className="loader" key={0}>
+                        Loading<Spinner style={{dispaly:"flex",justifyContent:"center"}} animation="border" variant="success" />
+                    </div>
+                    }
             >
                 {/* card component containing data related to users */}
                 <Row>
